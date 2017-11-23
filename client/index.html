@@ -1,0 +1,46 @@
+<html>
+	<head>
+         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<title>Home</title>
+	</head>
+	<body ng-app="app" ng-controller="MyCtrl">
+       <br /> <br />
+       <div class="container"> 
+        <div class="input-group">
+              <input class="form-control" ng-model="searchText" placeholder="Search Books" type="search"  />
+              <span class="input-group-addon" ng-click="search()">
+                  <span class="glyphicon glyphicon-search"></span>
+              </span>
+        </div> 
+        <br />         
+        <table class="table table-responsive table-bordered table-striped">
+             <thead>
+                 <tr>
+                     <th class="EmpId"><a>Books Details</a></th>
+                 </tr>
+             </thead> 
+             <tbody> 
+                 <tr ng-repeat="item in filteredList | orderBy:columnToOrder:reverse">
+                    <td>
+                            <figure class="floating">
+                                 <img ng-if = "item.thumbnail != 'null' && item.thumbnail != undefined " ng-src="{{ item.thumbnail }}" alt="Macaque in the trees" class="rcorners3" style='width:15%;' border="0" alt="Null">
+                                 <img ng-if="item.thumbnail == 'null' || item.thumbnail == undefined" ng-src="https://rachelandrew.co.uk/perch/resources/sb3-smashing-book-3-redesign-the-web1.png">
+                                 <!--Title-<figcaption>{{ item.title }}</figcaption>-->
+                                 <p style="color:blue">{{ item.title }}</p>
+                                 <p style="color:red">{{ item.authors[0] }}</p>
+                            </figure>   
+                    </td>
+                 </tr>
+             </tbody>
+        </table> 
+        </div>    
+	</body>
+	<script type="text/javascript" src="node_modules/angular/angular.min.js"></script>
+    <script type="text/javascript" src="node_modules/tc-angular-chartjs-master/tc-angular-chartjs-master/dist/tc-angular-chartjs.min.js"></script> 
+    <script src="node_modules/Chart.min.js"></script>
+    <script src="node_modules/angular-chart.js-master/angular-chart.js-master/dist/angular-chart.min.js"></script>
+	<script type="text/javascript" src="main.js"></script>
+    <link rel="stylesheet" href="app.css">
+</html>
