@@ -1,5 +1,6 @@
-angular.module('app', ['chart.js'])
+angular.module('app', [])
 .controller('MyCtrl',['$interval','$http','$scope',function($interval,$http,$scope){
+        //this function is for showing the default books //
         var refresh = function(){
             var id=[];
             var exchange_rate=[];
@@ -9,20 +10,8 @@ angular.module('app', ['chart.js'])
                }, function errorCallback(response) {
                console.log("responce value is",response);
             });
-        };  
-         $scope.resetAll = function()
-         {
-             $scope.filteredList = $scope.allItems ; 
-             $scope.newEmpId = '';
-             $scope.newName = '';
-             $scope.newEmail = '';
-             $scope.searchText = ''; 
-         }  
-         $scope.add = function()
-         {
-             $scope.allItems.push({EmpId : $scope.newEmpId, name : $scope.newName, Email:$scope.newEmail});
-             $scope.resetAll();  
-         } 
+        }; 
+           //this is for search query and get the result//
           $scope.search = function()
           { 
               console.log("search records are",$scope.searchText);
@@ -32,8 +21,7 @@ angular.module('app', ['chart.js'])
               },function errorCallback(response){
                 console.log("response value is",response);
               });
-          }  
-         //$scope.resetAll();   
+          }   
       refresh();
     //$interval(refresh, 300000);
 }]);
